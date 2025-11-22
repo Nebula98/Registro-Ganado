@@ -3,15 +3,15 @@ const router = express.Router();
 const ganadoController = require('../controllers/ganadoController');
 
 // Obtener todos los registros de ganado
-router.get('/ganado', ganadoController.obtenerGanado);
+router.get('/', ganadoController.obtenerGanado);
 
 // Crear un nuevo registro de ganado
-router.post('/ganado', ganadoController.agregarGanado);
+router.post('/', ganadoController.agregarGanado);
 
 // Actualizar un registro de ganado
-router.put('/ganado/:id', ganadoController.actualizarGanado);
+router.put('/:id', ganadoController.actualizarGanado);
 
 // Eliminar un registro de ganado
-router.delete('/ganado/:id', ganadoController.eliminarGanado);
+router.delete('/:id', ganadoController.eliminarGanado);
 
 module.exports = router;
