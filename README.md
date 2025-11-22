@@ -1,16 +1,205 @@
-# React + Vite
+# 🐄 Sistema de Gestión Ganadera
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Sistema web completo para la administración y control de inventario ganadero y propiedades rurales. Desarrollado con React, Node.js, Express y MongoDB.
 
-Currently, two official plugins are available:
+## 📋 Descripción
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Aplicación full-stack que permite gestionar de manera eficiente el registro de ganado y fincas, con funcionalidades CRUD completas, interfaz moderna y responsive.
 
-## React Compiler
+## ✨ Características
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+- 🐮 **Gestión de Ganado**: Registro, edición y eliminación de animales con datos de nombre, raza y edad
+- 🏡 **Gestión de Fincas**: Administración de propiedades con ubicación y tamaño en hectáreas
+- 🎨 **Interfaz Moderna**: Diseño profesional con Tailwind CSS
+- 📱 **Responsive**: Adaptable a dispositivos móviles, tablets y desktop
+- 🔄 **Tiempo Real**: Actualización instantánea de datos
+- ✏️ **Edición en Línea**: Modificación rápida de registros
 
-## Expanding the ESLint configuration
+## 🛠️ Tecnologías Utilizadas
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Frontend
+- React 18
+- Tailwind CSS
+- Fetch API
+- Vite
+
+### Backend
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+- CORS
+
+## 📦 Instalación
+
+### Prerrequisitos
+
+- Node.js (v14 o superior)
+- MongoDB (local o MongoDB Atlas)
+- npm o yarn
+
+### 1. Clonar el repositorio
+```bash
+git clone https://github.com/tu-usuario/sistema-ganadero.git
+cd sistema-ganadero
+```
+
+### 2. Configurar el Backend
+```bash
+# Navegar a la carpeta del backend
+cd backend
+
+# Instalar dependencias
+npm install
+
+# Crear archivo .env (opcional)
+# MONGO_URI=mongodb://localhost:27017/registro-ganado
+# PORT=5000
+
+# Iniciar el servidor
+node server.js
+```
+
+El servidor correrá en `http://localhost:5000`
+
+### 3. Configurar el Frontend
+```bash
+# En otra terminal, navegar a la carpeta del frontend
+cd frontend-react
+
+# Instalar dependencias
+npm install
+
+# Iniciar la aplicación
+npm run dev
+```
+
+La aplicación correrá en `http://localhost:5173`
+
+## 🗄️ Configuración de la Base de Datos
+
+### MongoDB Local
+
+Asegúrate de tener MongoDB instalado y corriendo:
+```bash
+# Windows
+mongod
+
+# Linux/Mac
+sudo systemctl start mongod
+```
+
+### MongoDB Atlas (Nube)
+
+1. Crea una cuenta en [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
+2. Crea un cluster gratuito
+3. Obtén tu connection string
+4. Agrégalo al archivo `.env` en el backend:
+```
+   MONGO_URI=mongodb+srv://usuario:password@cluster.mongodb.net/registro-ganado
+```
+
+## 🚀 Uso
+
+1. **Accede a la aplicación** en `http://localhost:5173`
+2. **Navega entre módulos** usando los botones en la barra superior
+3. **Gestiona Ganado**:
+   - Completa el formulario con nombre, raza y edad
+   - Haz clic en "Agregar Animal"
+   - Usa el lápiz azul para editar
+   - Usa el ícono rojo para eliminar
+4. **Gestiona Fincas**:
+   - Ingresa nombre, ubicación y tamaño
+   - Haz clic en "Registrar Finca"
+   - Edita o elimina según necesites
+
+## 📁 Estructura del Proyecto
+```
+proyecto-ganado/
+├── backend/
+│   ├── controllers/
+│   │   ├── ganadoController.js
+│   │   └── fincaController.js
+│   ├── models/
+│   │   ├── ganadoModel.js
+│   │   └── fincaModel.js
+│   ├── routes/
+│   │   ├── ganadoRoutes.js
+│   │   └── fincaRoutes.js
+│   ├── server.js
+│   └── package.json
+├── frontend-react/
+│   ├── src/
+│   │   ├── App.jsx
+│   │   ├── main.jsx
+│   │   └── index.css
+│   ├── index.html
+│   ├── package.json
+│   └── tailwind.config.js
+└── README.md
+```
+
+## 🔧 Scripts Disponibles
+
+### Backend
+```bash
+npm start          # Inicia el servidor en modo producción
+npm run dev        # Inicia con nodemon (auto-reload)
+```
+
+### Frontend
+```bash
+npm run dev        # Inicia el servidor de desarrollo
+npm run build      # Construye para producción
+npm run preview    # Preview de la build de producción
+```
+
+## 🌐 API Endpoints
+
+### Ganado
+- `GET /api/ganado` - Obtener todos los animales
+- `POST /api/ganado` - Crear nuevo animal
+- `PUT /api/ganado/:id` - Actualizar animal
+- `DELETE /api/ganado/:id` - Eliminar animal
+
+### Fincas
+- `GET /api/fincas` - Obtener todas las fincas
+- `POST /api/fincas` - Crear nueva finca
+- `PUT /api/fincas/:id` - Actualizar finca
+- `DELETE /api/fincas/:id` - Eliminar finca
+
+## 🐛 Solución de Problemas
+
+### El backend no se conecta a MongoDB
+- Verifica que MongoDB esté corriendo
+- Revisa la URI de conexión en `.env`
+- Comprueba las credenciales si usas Atlas
+
+### Error 404 en las peticiones
+- Asegúrate de que el backend esté corriendo en el puerto 5000
+- Verifica que las rutas estén correctamente configuradas
+- Revisa la consola del servidor para errores
+
+### Tailwind CSS no funciona
+- Ejecuta `npm install -D tailwindcss postcss autoprefixer`
+- Verifica que `index.css` tenga las directivas de Tailwind
+- Reinicia el servidor de desarrollo
+
+## 👤 Autor
+
+Tu Nombre - [GitHub](https://github.com/Nebula98)
+
+## 📄 Licencia
+
+Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para más detalles.
+
+## 🤝 Contribuciones
+
+Las contribuciones son bienvenidas. Por favor:
+
+1. Haz fork del proyecto
+2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
+3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
+4. Push a la rama (`git push origin feature/AmazingFeature`)
+5. Abre un Pull Request
+
